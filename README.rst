@@ -7,6 +7,9 @@ django-reports
 
 .. image:: https://travis-ci.org/grantmcconnaughey/django-reports.png?branch=master
     :target: https://travis-ci.org/grantmcconnaughey/django-reports
+    
+.. image:: https://coveralls.io/repos/grantmcconnaughey/django-reports/badge.svg?branch=master&service=github
+  :target: https://coveralls.io/github/grantmcconnaughey/django-reports?branch=master
 
 A Django app to easily create and render reports.
 
