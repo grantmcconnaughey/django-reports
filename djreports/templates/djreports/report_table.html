@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        {% for header in report.headers %}
+            <th>{{ header }}</th>
+        {% endfor %}
+    </thead>
+    <tbody>
+    {% for row in report.data %}
+        <tr>
+        {% for cell in row %}
+            <td>{{ cell }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
