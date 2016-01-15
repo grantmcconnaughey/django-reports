@@ -30,13 +30,13 @@ if sys.argv[-1] == 'tag':
     sys.exit()
 
 readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+changelog = open('CHANGELOG.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='django-reports',
     version=version,
     description="""A Django app to easily create and render reports.""",
-    long_description=readme + '\n\n' + history,
+    long_description=readme + '\n\n' + changelog,
     author='Grant McConnaughey',
     author_email='grantmcconnaughey@gmail.com',
     url='https://github.com/grantmcconnaughey/django-reports',
