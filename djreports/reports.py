@@ -15,6 +15,9 @@ class Report(object):
 
     @property
     def headers(self):
+        return self.get_headers()
+
+    def get_headers(self):
         data = self.get_data()
         return data[0] if data else []
 

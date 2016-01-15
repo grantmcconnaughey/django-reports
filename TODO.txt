@@ -2,10 +2,7 @@ TODO for django-reports
 
 Before Release
 ==============
-* Create Report base class.
-* Handle Python data (lists) reports.
 * Handle Django QuerySet reports.
-* Render reports to HTML tables.
 * Render reports to CSV.
 * Add parameter handling to reports.
 * Write documentation.

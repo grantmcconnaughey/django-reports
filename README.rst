@@ -7,7 +7,7 @@ django-reports
 
 .. image:: https://travis-ci.org/grantmcconnaughey/django-reports.png?branch=master
     :target: https://travis-ci.org/grantmcconnaughey/django-reports
-    
+
 .. image:: https://coveralls.io/repos/grantmcconnaughey/django-reports/badge.svg?branch=master&service=github
   :target: https://coveralls.io/github/grantmcconnaughey/django-reports?branch=master
 
@@ -35,7 +35,11 @@ Then use it in a project::
         description = 'A list of important things'
 
         def get_data(self):
-            return Thing.objects.filter(type='important')
+            return [
+                ['Name', 'Age'],
+                ['Grant', '24'],
+                ['Erica', '24'],
+            ]
 
     report = MyReport()
 
@@ -48,8 +52,8 @@ And render the report in your template::
 Features
 --------
 
-* Create report objects out of Python lists or Django QuerySets.
-* Render them to an HTML table or CSV
+* Create report objects out of Python lists.
+* Render them to an HTML table.
 
 Running Tests
 --------------
