@@ -7,13 +7,6 @@ class TestReport(Report):
     title = 'Test Report Title'
     subtitle = 'Test Report Subtitle'
 
-    def get_data(self):
-        return [
-            ['Name', 'Age', 'DOB'],
-            ['Grant', '24', '11/6/1991'],
-            ['Erica', '23', '12/30/1991'],
-        ]
-
 
 class ReportTests(TestCase):
 
