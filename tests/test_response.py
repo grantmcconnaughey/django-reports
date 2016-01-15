@@ -34,4 +34,4 @@ class CSVReportResponseTests(TestCase):
 
         response = CSVReportResponse(report)
 
-        self.assertEqual(response.content, 'Col1,Col2\r\nCell1,Cell2\r\n')
+        self.assertEqual(response.content.decode(), 'Col1,Col2\r\nCell1,Cell2\r\n')
