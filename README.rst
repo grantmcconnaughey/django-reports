@@ -24,12 +24,29 @@ Install django-reports::
 
 Then use it in a project::
 
-    import djreports
+    from djreports import Report
+
+    class MyReport(Report):
+
+        title = 'My Report'
+        description = 'A list of important things'
+
+        def get_data(self):
+            return Thing.objects.filter(type='important')
+
+    report = MyReport()
+
+And render the report in your template::
+
+    {% load djreport_tags %}
+
+    {% report_table report %}
 
 Features
 --------
 
-* TODO
+* Create report objects out of Python lists or Django QuerySets.
+* Render them to an HTML table or CSV
 
 Running Tests
 --------------

@@ -1,21 +1,29 @@
-# Config file for automatic testing at travis-ci.org
-
 language: python
 
 python:
-  - "3.5"
-  - "3.4"
-  - "3.3"
-  - "2.7"
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
 
 before_install:
-  - pip install codecov
+  - pip install coveralls
 
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -r requirements-test.txt
+install:
+  - pip install Django==${DJANGO}
+  - pip install -e .
+  - pip install -r requirements-test.txt
 
-# command to run tests using coverage, e.g. python setup.py test
-script: coverage run --source djreports runtests.py
+script: coverage run --source djreports runtests.py tests
+
+env:
+  - DJANGO=1.8.8
+  - DJANGO=1.9.1
+
+matrix:
+  exclude:
+    - python: 3.3
+      env: DJANGO=1.9.1
 
 after_success:
-  - codecov
+  - coveralls
