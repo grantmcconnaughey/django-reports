@@ -2,8 +2,6 @@ TODO for django-reports
 
 Before Release
 ==============
-* Handle Django QuerySet reports.
-* Render reports to CSV.
 * Add parameter handling to reports.
 * Write documentation.
 

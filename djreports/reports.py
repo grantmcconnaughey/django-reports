@@ -1,9 +1,12 @@
+from django.db.models.query import QuerySet
+
 
 class Report(object):
 
     title = ''
     subtitle = ''
     description = ''
+    fields = []
 
     def __init__(self, data=None, title='', subtitle='', **params):
         self._data = data
@@ -19,12 +22,31 @@ class Report(object):
 
     def get_headers(self):
         data = self.get_data()
-        return data[0] if data else []
+        if data and isinstance(data, (list, tuple)):
+            return data[0]
+        elif data and isinstance(data, QuerySet):
+            return [field.capitalize().replace('_', ' ') for field in self.fields]
+        else:
+            return []
+
+    def _format_field(self, field_value):
+        return '' if field_value is None else str(field_value)
 
     @property
     def data(self):
         data = self.get_data()
-        return data[1:] if data else []
+        if data and isinstance(data, (list, tuple)):
+            # List/tuple reports
+            return data[1:]
+        elif data and isinstance(data, QuerySet):
+            # Django Model reports
+            instances = list(data)
+            return [[self._format_field(getattr(instance, field))
+                     for field in self.fields
+                     if hasattr(instance, field)]
+                    for instance in instances]
+        else:
+            return []
 
     def get_data(self):
         """
